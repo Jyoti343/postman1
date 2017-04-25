@@ -1,0 +1,78 @@
+{
+	"variables": [],
+	"info": {
+		"name": "25thAprilJson1",
+		"_postman_id": "637e022a-ddd0-2e16-f0f3-897682682006",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get_a_lavel_advanced",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"content-Type is present \"]= postman.getResponseHeader(\"content-Type\");",
+							"tests[\"response time \"]= responseTime< 1300;",
+							"tests[\"body matches the string \"]= responseBody.has(\"userId\");",
+							"var jsndt=JSON.parse(responseBody);",
+							"tests[\"user id should be \"+ jsndt[0].userId]=jsndt[0].userId===1;",
+							"tests[\"id should be \"+ jsndt[0].id]=jsndt[0].id===1;",
+							"tests[\"title should be \"+ jsndt[0].title]=jsndt[0].title===\"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\";",
+							"tests[\"body should be \"+ jsndt[0].body]=jsndt[0].body===\"quia et suscipit\\nsuscipit recusandae consequuntur expedita et cum\\nrepreshenderit molestiae ut ut quas totam\\nnostrum rerum est autem sunt rem eveniet architecto\";",
+							"",
+							"",
+							"",
+							"console.log(jsndt.userId);",
+							"",
+							"",
+							"",
+							"var schema = ",
+							"",
+							"{",
+							"    \"$schema\": \"http://json-schema.org/draft-04/schema#\",",
+							"    \"definitions\": {},",
+							"    \"id\": \"http://jsonplaceholder.typicode.com/posts\",",
+							"    \"properties\": {",
+							"        \"body\": {",
+							"            \"id\": \"/properties/body\",",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"id\": {",
+							"            \"id\": \"/properties/id\",",
+							"            \"type\": \"integer\"",
+							"        },",
+							"        \"title\": {",
+							"            \"id\": \"/properties/title\",",
+							"            \"type\": \"string\"",
+							"        },",
+							"        \"userId\": {",
+							"            \"id\": \"/properties/userId\",",
+							"            \"type\": \"integer\"",
+							"        }",
+							"    },",
+							"    \"type\": \"object\"",
+							"};",
+							"",
+							"",
+							"",
+							"tests[\"Valid Data1\"] = tv4.validate(jsndt,schema);",
+							"console.log(\"Validation failed: \", tv4.error);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://jsonplaceholder.typicode.com/posts",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
