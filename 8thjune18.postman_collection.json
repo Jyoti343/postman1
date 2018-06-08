@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "7014e689-c90e-46ab-b234-01f60c476f62",
+		"name": "8thjune18",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost/wordpress/wc-api/v3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "085a4c27-0f95-4e92-a715-d0cceb59951b",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody)",
+							"tests['version ' + jsonData['store'].wc_version] = jsonData['store'].wc_version === '3.1.2'",
+							"",
+							"tests[\"routes/supports \" +jsonData['store'].routes['/'].supports] = jsonData['store'].routes['/'].supports===[\"HEAD\",\"GET\"];",
+							"",
+							"var i , j , k;",
+							"for ( i in jsonData.store){",
+							"    console.log(i);",
+							"    for (i in jsonData.store){",
+							"        tests[\"1st loop for tests \"+ i +' ' +jsonData.store[i]] = \"jyoti\";",
+							"    }",
+							"    for (var j in jsonData.store.routes){",
+							"        tests['2nd loops for tests '+ j+ \" \"+jsonData.store.routes['/']['supports'][j]] = \"luckie\"; ",
+							"            }",
+							"        ",
+							"    }"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://localhost/wordpress/wc-api/v3",
+				"description": "this is run again in 2018"
+			},
+			"response": []
+		}
+	]
+}
